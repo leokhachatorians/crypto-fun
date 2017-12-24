@@ -23,14 +23,13 @@ def decrypt(encrypted_message, pad):
     return text_from_bits(message)
 
 def create_pad_of_equal_size(message):
-    length = len(str(text_to_bits(message)))
+    length = len(str(text_to_bits(message))) * 2
     pad = ''.join(map(str,[random.getrandbits(1) for i in range(length)]))
     return int(pad)
 
 if __name__ == '__main__':
     message = "hola, world!"
     pad = create_pad_of_equal_size(message)
-    fake_pad = create_pad_of_equal_size(message)
 
     encrypted_message = encrypt(message, pad)
     decrypted_message = decrypt(encrypted_message, pad)
